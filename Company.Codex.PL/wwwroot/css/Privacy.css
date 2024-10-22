@@ -1,0 +1,121 @@
+/* General Page Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 50px;
+    padding: 20px;
+}
+
+/* Container */
+.privacy-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Heading */
+.heading {
+    font-size: 28px;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Card Layout for Sections */
+.privacy-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+/* Section Heading */
+.section-heading {
+    font-size: 22px;
+    color: #343a40;
+    margin-bottom: 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    border-left: 4px solid #007bff;
+    padding-left: 10px;
+}
+
+    /* Hover Animation on Section Heading */
+    .section-heading:hover {
+        color: #007bff;
+        transform: scale(1.05);
+    }
+
+/* General Text */
+p, ul {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* List Styling */
+ul {
+    padding-left: 20px;
+}
+
+    ul li {
+        margin-bottom: 8px;
+    }
+
+/* Link Hover Animation */
+a {
+    text-decoration: none;
+    color: #007bff;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: #0056b3;
+    }
+
+    a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: #007bff;
+        left: 0;
+        bottom: -5px;
+        transition: width 0.3s ease;
+    }
+
+    a:hover::after {
+        width: 100%;
+    }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .privacy-container {
+        padding: 15px;
+    }
+
+    .section-heading {
+        font-size: 20px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+
+}

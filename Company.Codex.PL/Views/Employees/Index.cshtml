@@ -1,0 +1,94 @@
+﻿@model IEnumerable<EmployeeViewModel>
+@{
+    ViewData["Title"] = "Index";
+
+    string s01 = ViewData["Message"] as string; // Required Casting
+    string s02 = ViewBag.lol; // Not Required Casting
+}
+
+<h1>All Employees</h1>
+<br />
+<br />
+
+<form asp-action="Index" method="post">
+    <div class="row m-5">
+        <div class="col-8">
+            <input type="text" name="searchInput" id="searchInput" placeholder="Search By Name ....." class="form-control" />
+        </div>
+        <div class="col-4 ">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+
+<a asp-controller="Employees" asp-action="Create" class="btn btn-primary ">Create Employee</a>
+<br />
+<br />
+
+@* <div class="alert alert-danger">
+    <p>@ViewData["Message"]</p>
+</div>
+
+<div class="alert alert-warning">
+    <p>@ViewBag.lol</p>
+</div> *@
+
+@if(!string.IsNullOrEmpty(@TempData["Message"] as string))
+{
+    <div class="alert alert-success">
+        <p>@TempData["Message"]</p>
+    </div>
+}
+
+
+@if(Model.Count()>0)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(E => E.Image)</th>
+                <th>@Html.DisplayNameFor(E => E.Name)</th>
+                <th>@Html.DisplayNameFor(E => E.Age)</th>
+                <th>@Html.DisplayNameFor(E => E.Address)</th>
+                <th>@Html.DisplayNameFor(E => E.WorkFor)</th>
+                <th>@Html.DisplayNameFor(E => E.Email)</th>
+                <th>@Html.DisplayNameFor(E => E.PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(E => E.Salary)</th>
+                <th>@Html.DisplayNameFor(E => E.IsActive)</th>
+                <th>@Html.DisplayNameFor(E => E.HiringDate)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var employee in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/files/images/@employee.ImageName" width="75" class="img-fluid rounded-circle" />
+                    </td>
+                    <td>@employee.Name</td>
+                    <td>@employee.Age</td>
+                    <td>@employee.Address</td>
+                    <td>@employee?.WorkFor?.Name</td>
+                    <td>@Html.DisplayFor(M=>employee.Email)</td> @* print the data according to the attribute i put in the employee class (Model) *@
+                    <td>@employee.PhoneNumber</td>
+                    <td>@Html.DisplayFor(M => employee.Salary)</td>
+                    <td>@Html.DisplayFor(M => employee.IsActive)</td>
+                    <td>@employee.HiringDate</td>
+                    <partial name="_ButtonPartialView" model="@employee.Id.ToString()" /> @* // Her I Have To Name The model Because The Model Of The 2 Files Are Different Here Is IEnumerable and in the parital view is int *@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        <h4>There Is No Employees</h4>
+    </div>
+}
+
+

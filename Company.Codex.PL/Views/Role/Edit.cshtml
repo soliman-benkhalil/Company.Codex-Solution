@@ -1,0 +1,29 @@
+﻿@model RoleViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Role Page</h1>
+
+<br />
+<br />
+
+<form asp-action="Edit" enctype="multipart/form-data">
+
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+    <partial name="ParitalViews/EditCreateRoleParitalView" model="@Model" />
+
+
+    <a asp-action="AddOrRemoveUser" asp-route-roleId="@Model.Id" class="btn btn-success mt-3">Add Or Remove User</a>
+
+    <input type="submit" value="Save" class="btn btn-warning mt-3" />  
+    <a asp-action="Index" class="btn btn-light mt-3">Back To List</a>
+</form>
+
+
+@section EmployeeClientSideValidationSection {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    @* // They Need To Library  Called jquery so i need to line jquery above them but jquery linked with layout but under them  *@
+}

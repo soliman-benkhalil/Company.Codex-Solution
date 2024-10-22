@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Access Denied - Company.Codex.PL</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Company.Codex.PL.styles.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #ddddddc2; /* Light background for readability */
+            color: #343a40; /* Dark text */
+        }
+
+        .access-denied-container {
+            text-align: center;
+            padding: 50px;
+        }
+
+            .access-denied-container h1 {
+                font-size: 3em;
+                color: #dc3545; /* Red to indicate danger or error */
+            }
+
+            .access-denied-container p {
+                font-size: 1.5em;
+                margin-top: 20px;
+            }
+
+            .access-denied-container a {
+                margin-top: 30px;
+                display: inline-block;
+                color: #007bff;
+                font-size: 1.2em;
+            }
+
+                .access-denied-container a:hover {
+                    color: #0056b3;
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="container access-denied-container">
+        <h1>Access Denied</h1>
+        <p>Sorry, you do not have permission to view this page.</p>
+        <a href="javascript:history.back()">Go Back</a> |
+        <a href="/">Return to Home</a>
+    </div>
+</body>
+</html>

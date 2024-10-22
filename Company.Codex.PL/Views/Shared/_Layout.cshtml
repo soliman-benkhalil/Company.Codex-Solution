@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Company.Codex.PL</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Company.Codex.PL.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header id="mainHeader">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <button id="toggleHeader" class="btn btn-primary me-3">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <p class="navbar-brand" p>Company.Codex</p>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Departments" asp-action="Index">Departments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Employees" asp-action="Index">Employees</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Role" asp-action="Index">Roles</a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-danger btn-sm" asp-area="" asp-controller="Account" asp-action="SignOut">LogOut</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="scrollable-content">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+    <footer class="footer text-muted">
+        <div class="container">
+            &copy; 2024 - Company.Codex.PL - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <button id="darkModeToggle" class="btn btn-outline-secondary rounded-circle">
+        <i class="fas fa-moon"></i>
+    </button>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("EmployeeClientSideValidationSection", required: false)
+    @await RenderSectionAsync("DepartmentClientSideValidationSection", required: false)
+</body>
+</html>

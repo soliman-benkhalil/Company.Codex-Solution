@@ -1,0 +1,60 @@
+﻿@model IEnumerable<RoleViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All Roles</h1>
+
+<br />
+<br />
+
+<form asp-action="Index" method="post">
+    <div class="row m-5">
+        <div class="col-8">
+            <input type="text" name="searchInput" id="searchInput" placeholder="Search By Email ....." class="form-control" />
+        </div>
+        <div class="col-4 ">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+
+
+
+<a asp-controller="Role" asp-action="Create" class="btn btn-primary ">Create Role</a>
+<br />
+<br />
+
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(R => R.Id)</th>
+                <th>@Html.DisplayNameFor(R => R.RoleName)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var User in Model)
+            {
+                <tr>
+                    <td>@User.Id</td>
+                    <td>@User.RoleName</td>
+                    <partial name="_ButtonPartialView" model="@User.Id" /> @* // Her I Have To Name The model Because The Model Of The 2 Files Are Different Here Is IEnumerable and in the parital view is int *@
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (!Model.Any())
+{
+    <div class="alert alert-warning">
+        <h4>There Is No Roles</h4>
+    </div>
+}

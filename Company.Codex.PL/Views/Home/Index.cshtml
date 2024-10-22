@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/Index.css">
+</head>
+<body>
+    <div class="project-description">
+        <h2 class="heading">Welcome to Company.Codex</h2>
+        <p>Company.Codex is a comprehensive management system designed to handle employee and department data efficiently. Here's an overview of our project structure:</p>
+
+        <h3>Key Components:</h3>
+        <div class="sections">
+            <div class="card" data-index="0">
+                <h4 class="card-title">User Management</h4>
+                <p class="card-content">Utilizes ASP.NET Core Identity with custom ApplicationUser class, extending IdentityUser with additional properties like FirstName, LastName, and IsAgree.</p>
+            </div>
+            <div class="card" data-index="1">
+                <h4 class="card-title">Department Management</h4>
+                <p class="card-content">Departments are tracked with unique codes, names, and creation dates. Each department can have multiple employees.</p>
+            </div>
+            <div class="card" data-index="2">
+                <h4 class="card-title">Employee Management</h4>
+                <p class="card-content">Comprehensive employee data including personal details, salary information, and employment status. Employees are associated with departments.</p>
+            </div>
+            <div class="card" data-index="3">
+                <h4 class="card-title">Email Functionality</h4>
+                <p class="card-content">Basic email structure for communication purposes.</p>
+            </div>
+        </div>
+
+        <h3>Core Features:</h3>
+        <ul class="features-list">
+            <li>Hierarchical data structure with BaseEntity as the foundation for other models.</li>
+            <li>Tracking of active and deleted employees.</li>
+            <li>Date tracking for hiring and record creation.</li>
+            <li>Support for employee images.</li>
+            <li>Flexible department-employee relationships.</li>
+        </ul>
+
+        <p>This system is designed to provide a robust framework for managing your company's organizational structure and personnel data efficiently.</p>
+    </div>
+
+    <script src="~/js/Index.js"></script>
+</body>
+</html>
